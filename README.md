@@ -1,5 +1,9 @@
 # Getting Started with Create React App
 
+### `npm start` -> inicializar con este comando correra la app en frontend y actomaticamente el server.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
