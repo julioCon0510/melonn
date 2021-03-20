@@ -6,24 +6,24 @@ export default function ModalViewList({ showView, listitemadd, setShowView }) {
   return (
     <Modal show={showView} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>View added items</Modal.Title>
+        <Modal.Title>Ver elementos agregados</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {listitemadd.length < 1 ? (
-          <div className="text-center">Not data</div>
+          <div className="text-center">Sin registro</div>
         ) : (
           <div>
             <Table striped bordered hover>
               <thead>
                 <tr>
-                  <th>Product name</th>
-                  <th>Product quantity</th>
-                  <th>Product weight</th>
+                  <th>Nombre del producto</th>
+                  <th>Cantidad de producto</th>
+                  <th>Peso del Producto</th>
                 </tr>
               </thead>
               <tbody>
-                {listitemadd.map((e) => (
-                  <tr>
+                {listitemadd.map((e, i) => (
+                  <tr key={i}>
                     <td>{e.productName}</td>
                     <td>{e.productWeight}</td>
                     <td>{e.productqty}</td>
@@ -36,7 +36,7 @@ export default function ModalViewList({ showView, listitemadd, setShowView }) {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          Close
+          Cerrar
         </Button>
       </Modal.Footer>
     </Modal>

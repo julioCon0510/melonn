@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { queryNewPro } from "../../actions/orderListActions";
+import lupa from "../../recurso/lupa.png";
+import { Link } from "react-router-dom";
 
 export default function ListOrder() {
   const dispatch = useDispatch();
@@ -32,12 +34,18 @@ export default function ListOrder() {
           {productLista.map((e) => (
             <tr key={e.id}>
               <td>
-                <button className="btn btn-success btn-sm"></button>
+                <Link to={`/detail-product/${e.id}`}>
+                  <button className="btn btn-success btn-sm">
+                    <img src={lupa} alt="" />
+                  </button>
+                </Link>
               </td>
               <td>{e.id}</td>
               <td>{e.store}</td>
-              <td>2021-03-19</td>
-              <td>{e.method}</td>
+              <td>
+                {e.creationDate}:{e.creationHour}{" "}
+              </td>
+              <td>{e.description}</td>
             </tr>
           ))}
         </tbody>

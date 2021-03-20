@@ -5,6 +5,7 @@ import { listShippigMethod } from "../../actions/shippingMethodActions";
 import ModalCreate from "./ModalCreate";
 import ModalViewList from "./ModalViewList";
 import { useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const CreateProducto = () => {
   const dispatch = useDispatch();
@@ -40,7 +41,22 @@ const CreateProducto = () => {
   const submitForm = (e) => {
     e.preventDefault();
     if (!form.method) {
-      alert("llenar el campo " + form.method);
+      Swal.fire({
+        title: "Falta llenar campos",
+        text: "llenar el campo " + form.method,
+        icon: "warning",
+        confirmButtonText: "Ok",
+      });
+      return false;
+    }
+    if (form.lineItems.length === 0) {
+      Swal.fire({
+        title: "Falta llenar campos",
+        text: "Agregar elementos de productos ",
+        icon: "warning",
+        confirmButtonText: "Ok",
+      });
+
       return false;
     }
     addProduct(form);
@@ -57,20 +73,21 @@ const CreateProducto = () => {
   useEffect(() => {
     if (createOrder.formReducer.status) {
       // eslint-disable-next-line
-      history.push("/");
+        history.push("/");
     }
   }, [createOrder.formReducer.status]);
 
-  //   const handleShow = () => setShow(true);
-
   return (
     <div className="container pt-5">
+      <button className="btn btn-light mb-2" onClick={() => history.push("/")}>
+        Ver listado
+      </button>
       <div className="card p-3">
         <form onSubmit={(e) => submitForm(e)} method={"POST"}>
-          <h2> Sell order creation</h2>
+          <h2> Creación de pedidos de venta</h2>
           <div className="row p-2">
             <div className="col-md-6">
-              <label htmlFor="">Seller store</label>
+              <label htmlFor="">Tienda del vendedor</label>
               <input
                 type="text"
                 name="store"
@@ -80,7 +97,7 @@ const CreateProducto = () => {
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="">Shipping method</label>
+              <label htmlFor="">Método de envío</label>
               <select
                 name="method"
                 onChange={(e) => inputForm(e)}
@@ -97,7 +114,7 @@ const CreateProducto = () => {
               </select>
             </div>
             <div className="col-md-6">
-              <label htmlFor="">External order number</label>
+              <label htmlFor="">Número de pedido externo</label>
               <input
                 type="text"
                 name="orderNumber"
@@ -107,7 +124,7 @@ const CreateProducto = () => {
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="">Buyer full name</label>
+              <label htmlFor="">Nombre completo del comprador</label>
               <input
                 type="text"
                 name="fullName"
@@ -117,7 +134,7 @@ const CreateProducto = () => {
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="">Buyer phone number</label>
+              <label htmlFor="">Número de teléfono del comprador</label>
               <input
                 type="text"
                 name="phoneNumber"
@@ -127,7 +144,7 @@ const CreateProducto = () => {
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="">Buyer email</label>
+              <label htmlFor="">Correo electrónico del comprador</label>
               <input
                 type="text"
                 name="email"
@@ -137,7 +154,7 @@ const CreateProducto = () => {
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="">Shipping address</label>
+              <label htmlFor="">Dirección de Envío</label>
               <input
                 type="text"
                 name="address"
@@ -147,7 +164,7 @@ const CreateProducto = () => {
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="">Shipping city</label>
+              <label htmlFor="">Ciudad de envío</label>
               <input
                 type="text"
                 name="city"
@@ -157,7 +174,7 @@ const CreateProducto = () => {
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="">Shipping region</label>
+              <label htmlFor="">Región de envío</label>
               <input
                 type="text"
                 name="region"
@@ -167,7 +184,7 @@ const CreateProducto = () => {
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="">Shipping country</label>
+              <label htmlFor="">País de envío</label>
               <input
                 type="text"
                 name="country"
@@ -177,7 +194,7 @@ const CreateProducto = () => {
               />
             </div>
             <div className="col-md-3">
-              <label htmlFor="">Line items</label>
+              <label htmlFor="">Agregar articulo</label>
               <button
                 type="button"
                 className="btn btn-primary btn-block mb-3"
@@ -187,10 +204,10 @@ const CreateProducto = () => {
               </button>
               <button
                 type="button"
-                className="btn btn-primary btn-block mb-3"
+                className="btn btn-danger btn-block mb-3"
                 onClick={() => setShowView(true)}
               >
-                View added list
+                Articulos agregados ({listitemadd.length})
               </button>
             </div>
             <div className="col-md-12">
@@ -198,7 +215,7 @@ const CreateProducto = () => {
                 className="btn btn-block"
                 style={{ backgroundColor: "#46d999" }}
               >
-                Create Order
+                Crear Orden
               </button>
             </div>
           </div>

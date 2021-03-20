@@ -1,4 +1,4 @@
-import { ORDER_LIST_PRODUCT } from "../types/index";
+import { ORDER_LIST_PRODUCT, LIST_FOR_ID } from "../types/index";
 import clienteAxios from "../config/axios";
 
 export function queryNewPro(form) {
@@ -10,7 +10,23 @@ export function queryNewPro(form) {
   };
 }
 
+export function queryListID(id) {
+  return async (dispatch) => {
+    let res = await clienteAxios.post("/list_ordenid", {
+      product: "product",
+      id: id,
+    });
+
+    dispatch(queryListProId(res));
+  };
+}
+
 const queryListPro = (res) => ({
   type: ORDER_LIST_PRODUCT,
+  payload: res,
+});
+
+const queryListProId = (res) => ({
+  type: LIST_FOR_ID,
   payload: res,
 });

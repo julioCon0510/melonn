@@ -28,10 +28,10 @@ const Principal = () => {
       <Row>
         <Col xs={12} md={6} className={style.contenedor}>
           <div className={style.textP}>Bienvenido a Melonn</div>
-          <div className={style.textS}>Administre los pedidos facilmente,.</div>
+          <div className={style.textS}>Administre tus pedidos facilmente.</div>
           <div className={style.button}>
             <button onClick={() => history.push("/create-product")}>
-              Crear orden
+              Crear pedido
             </button>
           </div>
         </Col>

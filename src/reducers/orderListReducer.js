@@ -1,6 +1,7 @@
-import { ORDER_LIST_PRODUCT } from "../types";
+import { ORDER_LIST_PRODUCT, LIST_FOR_ID } from "../types";
 const initialState = {
   listPro: [],
+  listProId: [],
 };
 
 export default function f(state = initialState, action) {
@@ -9,6 +10,12 @@ export default function f(state = initialState, action) {
       return {
         ...state,
         listPro: [action.payload],
+      };
+
+    case LIST_FOR_ID:
+      return {
+        ...state,
+        listProId: action.payload,
       };
     default:
       return state;

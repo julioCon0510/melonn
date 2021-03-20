@@ -49,42 +49,42 @@ export default function ModalCreate({
     <Modal show={show} onHide={handleClose}>
       <form method="post">
         <Modal.Header closeButton>
-          <Modal.Title>Add items</Modal.Title>
+          <Modal.Title>Agregar elementos</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form.Group controlId="formBasicPassword">
-            <Form.Label>Product name</Form.Label>
+            <Form.Label>Nombre del producto</Form.Label>
             <Form.Control
               name="productName"
-              placeholder="Product name"
+              placeholder="Nombre del producto"
               onChange={(e) => inputForm(e)}
             />
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
-            <Form.Label>Product quantity</Form.Label>
+            <Form.Label>Cantidad de producto</Form.Label>
             <Form.Control
               name="productqty"
               type="number"
-              placeholder="Product quantity"
+              placeholder="Cantidad de producto"
               onChange={(e) => inputForm(e)}
             />
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
-            <Form.Label>Product weight</Form.Label>
+            <Form.Label>Peso del Producto</Form.Label>
             <Form.Control
               name="productWeight"
               type="number"
-              placeholder="Product weight"
+              placeholder="Peso del Producto"
               onChange={(e) => inputForm(e)}
             />
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Cerrar
           </Button>
           <Button variant="primary" onClick={(handleClose, saveItems)}>
-            Save Changes
+            Guardar
           </Button>
         </Modal.Footer>
       </form>
