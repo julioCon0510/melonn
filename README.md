@@ -1,6 +1,9 @@
 # Getting Started with Create React App
 
-### `npm start` -> inicializar con este comando,con esta correra la app en frontend y automaticamente el server.
+### `npm start` -> inicializar con este comando,con esta correra la app en frontend y automaticamente el server.}
+
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:5000](http://localhost:5000) to server
 
 
 
