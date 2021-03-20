@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-### `npm start` -> inicializar con este comando correra la app en frontend y actomaticamente el server.
+### `npm start` -> inicializar con este comando,con esta correra la app en frontend y automaticamente el server.
 
 
 
