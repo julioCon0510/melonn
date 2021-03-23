@@ -32,7 +32,7 @@ const calcular = (valr, arrayDays, hour) => {
     max = "NULL";
   } else if (valr.max.type === "DELTA-HOURS") {
     let hora = parseInt(hour) + parseInt(valr.max.deltaHours);
-    max = moment(hora + ":00");
+    max = hora + ":00";
   } else if (valr.max.type === "DELTA-BUSINESSDAYS") {
     let restar = 1;
     if (valr.max.deltaBusinessDays === 0) {
